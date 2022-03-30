@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我是猪</title>
+
+</head>
+
+<body>
+    <script type="text/javascript">
+        var oldArray = [
+            {
+                name: 'lzt',
+                age: 23
+            },
+            {
+                name: 'pp',
+                age: 8
+            }
+        ];
+        
+        var nameArray = oldArray.map(function(item, index){
+            return item.name;
+        })
+        var ageArray = oldArray.map(function(item, index){
+            return item.age;
+        })
+
+        // console.log(nameArray + ageArray);
+
+        //清除字符串的前后空格
+        var str = "         hello lzt           ";
+        console.log(str);
+        console.log(str.trim());
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我是猪</title>
+
+</head>
+
+<body>
+    <script type="text/javascript">
+        var str = "Tibo was finding his earpods, but he found that he was a pig!";
+        var pos = [];
+        var add = str.indexOf('i');
+
+        while(add > -1){
+            pos.push(add);
+
+            //+1很重要哦
+            add = str.indexOf('i', add+1);
+        }
+
+        console.log(pos);
+    </script>
+</body>
+
+</html>
