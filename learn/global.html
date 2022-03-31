@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我是猪</title>
+
+</head>
+
+<body>
+    <script type="text/javascript">
+        var url = 'http://www.baidu.com  ';
+        // console.log(encodeURI(url));
+        // 下方是使用最多的编码方式
+        // console.log(encodeURIComponent(url));
+
+        var enUri = encodeURI(url);
+        var enUriC = encodeURIComponent(url);
+
+        var deUri = decodeURI(enUri);
+        var err = decodeURI(enUriC);
+        var deUriC = decodeURIComponent(enUriC);
+
+        console.log(err);
+    </script>
+</body>
+
+</html>

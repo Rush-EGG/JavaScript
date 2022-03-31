@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我是猪</title>
+
+</head>
+
+<body>
+    <script type="text/javascript">
+        var time;
+        var apm;
+        var now = new Date();
+        var tempHour = now.getHours();
+        var tempMinute = now.getMinutes();
+        var tempSecond = now.getSeconds();
+
+        var hour = (tempHour > 12 ? tempHour - 12 : tempHour) + '';
+        if (tempHour == 0) {
+            hour = '12';
+        }
+        if (hour >= 12) {
+            apm = 'PM';
+        } else {
+            apm = 'AM';
+        }
+        // console.log(temp);
+
+        var minute;
+        if (tempMinute < 10) {
+            minute = '0' + tempMinute;
+        } else {
+            minute = tempMinute;
+        }
+        // console.log(minute)
+
+        var second;
+        if (tempSecond < 10) {
+            second = '0' + tempSecond;
+        } else {
+            second = tempSecond;
+        }
+
+        time = hour + ':' + minute + ':' + second + ' ' + apm;
+        console.log(time);
+
+        // var num = 12.35;
+        // console.log(num.toFixed(5));
+
+        function getNumTime() {
+            var time;
+            var apm;
+            var now = new Date();
+            var tempHour = now.getHours();
+            var tempMinute = now.getMinutes();
+            var tempSecond = now.getSeconds();
+
+            var hour = (tempHour > 12 ? tempHour - 12 : tempHour) + '';
+            if (tempHour == 0) {
+                hour = '12';
+            }
+            if (hour >= 12) {
+                apm = 'PM';
+            } else {
+                apm = 'AM';
+            }
+            // console.log(temp);
+
+            var minute;
+            if (tempMinute < 10) {
+                minute = '0' + tempMinute;
+            } else {
+                minute = tempMinute;
+            }
+            // console.log(minute)
+
+            var second;
+            if (tempSecond < 10) {
+                second = '0' + tempSecond;
+            } else {
+                second = tempSecond;
+            }
+
+            time = hour + ':' + minute + ':' + second + ' ' + apm;
+            return time;
+        }
+    </script>
+</body>
+
+</html>

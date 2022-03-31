@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我是猪</title>
+
+</head>
+
+<body>
+    <form>
+        <input type="text" name="user">
+        <input type="text" name="pwd">
+        <input type="submit">
+    </form>
+    
+    <script type="text/javascript">
+        var str = null;
+        var items = null;
+        var item = null;
+        var key = null, value = null, args = {};
+
+        if (location.search.length > 0) {
+            str = location.search.substring(1); // 去掉问号
+        } else {
+            str = '';
+        }
+        // console.log(str);
+
+        // 以&分割字符串，得到一个数组，存放的是网页得到的各个元素
+        items = str.length ? str.split('&') : [];
+        console.log(items);
+
+        // 以=分割元素，将他们存放到temp数组中
+        for(var i = 0; i < items.length; i++){
+            item = items[i].split('=');
+            key = decodeURIComponent(item[0]);
+            value = decodeURIComponent(item[1]);
+            if(key.length){
+                args[key] = value;
+            }
+        }
+
+        console.log(args);
+    </script>
+</body>
+
+</html>

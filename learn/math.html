@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我是猪</title>
+
+</head>
+
+<body>
+    <script type="text/javascript">
+        var arr = [1, 50, 34, 2546, 7];
+        var max = Math.max.apply(null, arr);
+
+        console.log(max);
+
+        var num = 24.001;
+        console.log(Math.ceil(num)); //向上取整
+        console.log(Math.round(num)); //四舍五入
+
+        // 获取min-max之间的随机数
+        function random(max, min) {
+            var res = Math.floor(Math.random() * (max - min) + min);
+
+            return res;
+        }
+
+        function randomCol() {
+            var r = random(0, 256);
+            var g = random(0, 256);
+            var b = random(0, 256);
+
+            var rgb = `rgb(${r}, ${g}, ${b})`;
+            // console.log(rgb);
+
+            return rgb;
+        }
+
+        var color = randomCol();
+        document.body.style.backgroundColor = color;
+
+        function randomCode() {
+            var code = '';
+            var length = 4;
+            var arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F',
+                'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'U',
+                'V', 'W', 'X', 'Y', 'Z'
+            ];
+
+            for (var i = 0; i < length; i++) {
+                var index = random(0, arr.length);
+                code += arr[index];
+            }
+
+            return code;
+        }
+
+        var code = randomCode();
+        // console.log(code);
+        document.write(`<h1>${code}</h1>`);
+    </script>
+</body>
+
+</html>

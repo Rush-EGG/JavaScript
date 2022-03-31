@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我是猪</title>
+
+</head>
+
+<body>
+    <script type="text/javascript">
+        function hasPlugin(pluginName){
+            pluginName = pluginName.toLowerCase();
+            var flag = false;
+
+            for(var i = 0; i < navigator.plugins.length; i++){
+                // console.log(navigator.plugins[i].name.toLowerCase());
+                if(navigator.plugins[i].name.toLowerCase() == pluginName){
+                    flag = true;
+                    break;
+                }
+            }
+            return flag;
+        }
+
+        alert(hasPlugin('Flash'));
+        // hasPlugin('webkit built-in pdf');
+    </script>
+</body>
+
+</html>
