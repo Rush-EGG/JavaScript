@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我是猪</title>
+    <style type="text/css">
+        #box {
+            color: red;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div title="文本" id="box">我是一个文本节点<!--我是注释--></div>
+    <!-- 
+        几种常用的节点类型(nodeType)
+        元素类型        节点类型
+        元素-Element    1
+        属性-id         2
+        文本            3
+        注释            8
+        文档            9
+     -->
+    <script type="text/javascript">
+        var oDiv = document.getElementById('box');
+        console.log(oDiv.childNodes);
+
+        // 元素节点
+        console.log('元素节点: ' + oDiv.nodeName + '+' + oDiv.nodeType + '+' + oDiv.nodeValue);
+
+        // 属性节点
+        // console.log(oDiv.attributes);
+        var id = oDiv.attributes[1];
+        console.log('属性节点: ' + id.nodeName + '+' + id.nodeType + '+' + id.nodeValue);
+
+        // 文本节点
+        var text = oDiv.childNodes[0];
+        console.log('文本节点: ' + text.nodeName + '+' + text.nodeType + '+' + text.nodeValue);
+
+        // 注释节点
+        var note = oDiv.childNodes[1];
+        console.log('注释节点: ' + note.nodeName + '+' + note.nodeType + '+' + note.nodeValue);
+
+    </script>
+</body>
+
+</html>

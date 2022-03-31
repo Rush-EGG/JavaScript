@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我是猪</title>
+    <style type="text/css">
+        .active{
+            color: blue;
+            font-size: 30px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="box">
+        <p id="active">lzt</p>
+        <!-- <p>alex</p> -->
+    </div>
+
+    <script type="text/javascript">
+        // 先找到要插入的位置
+        var oDiv = document.getElementById('box');
+        // 再创建要插入什么
+        var newNode = document.createElement('p'); // 节点
+
+        // 至于决定这个节点内有什么文本内容，方法有三种
+        // 方法一
+        var text = document.createTextNode('alex'); // 节点中的text内容
+        newNode.setAttribute('class', 'active');
+        newNode.appendChild(text);
+
+        // 方法二 能渲染文本和链接
+        // newNode.innerHTML = 'alex@qq.com';
+        newNode.innerHTML = '<a href="#">alex@qq.com</a>';
+
+        // 方法三 只能渲染文本
+        newNode.innerText = '<a href="#">alex@qq.com</a>';
+
+        oDiv.appendChild(newNode);
+
+        // 在某一节点之前插入一个新的节点
+        var oP = document.getElementById('active');
+        var newNode2 = document.createElement('p');
+        newNode2.innerHTML = '<a href="#">lpp@qq.com</a>';
+
+        oDiv.insertBefore(newNode2, oP);
+
+        // 替换节点
+        var oBaidu = document.createElement('a');
+        oBaidu.innerHTML = '百度一下';
+        oBaidu.setAttribute('href', 'https://www.baidu.com');
+
+        oDiv.replaceChild(oBaidu, oP);
+    </script>
+</body>
+
+</html>

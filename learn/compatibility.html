@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我是猪</title>
+
+</head>
+
+<body>
+    <div class="previous">我是前一个兄弟</div>
+
+
+
+
+    <div id="father">
+        <p>lzt</p>
+        <p>lpp</p>
+    </div>
+
+    <div class="sibling">我是下一个兄弟</div>
+
+    <script type="text/javascript">
+        var o = document.getElementById('father');
+
+        // console.log(o.childNodes);
+
+        function get_childNodes(father) {
+            var arr = []; // 来接收非换行符等有意义的节点内容
+            var nodes = father.childNodes;
+            // console.log(nodes);
+
+            for (var i = 0; i < nodes.length; i++) {
+                if(nodes[i].nodeType == 1){
+                    // console.log(nodes[i]);
+                    arr.push(nodes[i]);
+                }
+            }
+
+            return arr;
+        }
+
+        var array = get_childNodes(o);
+        // console.log(array);
+
+        function get_siblingNode(node){
+            var sibNode = node.nextSibling;
+            // console.log(typeof(node.nextSibling.nodeName))
+            while(sibNode && sibNode.nodeType != 1){
+                sibNode = sibNode.nextSibling;
+                // console.log('我是猪');
+                // console.log(node);
+            }
+
+            return sibNode
+        }
+
+        sibNode = get_siblingNode(o);
+        console.log(sibNode);
+
+        function get_previousSibling(node){
+            var preNode = node.previousSibling;
+
+            while(sibNode && preNode.nodeType != 1){
+                preNode = preNode.previousSibling;
+            }
+
+            return preNode;
+        }
+
+        preNode = get_previousSibling(o);
+        console.log(preNode);
+    </script>
+</body>
+
+</html>

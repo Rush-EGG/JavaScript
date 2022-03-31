@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我是猪</title>
+    <style>
+        .text{
+            color: red;
+            font-size: 8px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <form action="">
+        <p class="name">
+            <label for="username">用户名:</label>
+            <input type="text" name="user" id="username">
+        </p>
+        <p>
+            <label for="pwd">密码:</label>
+            <input type="text" name="pwd" id="pwd">
+        </p>
+        <input type="submit" name="">
+    </form>
+
+    <script type="text/javascript">
+        var user = document.getElementById('username');
+        var pwd = document.getElementById('pwd');
+        var node = document.createElement('span');
+
+        user.onfocus = function(){
+            node.innerHTML = '请输入用户名';
+            node.setAttribute('class', 'text');
+            user.parentNode.appendChild(node);
+        }
+        
+        user.onblur = function(){
+            user.parentNode.removeChild(node);
+        }
+    </script>
+</body>
+
+</html>
