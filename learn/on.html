@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我是猪</title>
+
+</head>
+
+<body>
+    <textarea name="" id="" cols="30" rows="10">请输入个人简介</textarea>
+    <input type="text" name="" value="lzt">
+    <script type="text/javascript">
+        var textArea = document.getElementsByTagName('textarea')[0];
+        var oInput = document.getElementsByTagName('input')[0];
+        // console.log(textArea);
+        textArea.onselect = function(){
+            alert("内容被选中！");
+        }
+        // 获取到输入框中的内容
+        textArea.oninput = function(){
+            console.log(this.value);
+        }
+
+        oInput.onchange = function(){
+            alert("内容被改变！");
+        }
+        // 获取到输入框中的内容
+        oInput.oninput = function(){
+            // console.log("内容被实时改变了...");
+            console.log(this.value);
+        }
+    </script>
+</body>
+
+</html>

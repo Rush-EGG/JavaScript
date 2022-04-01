@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我是猪</title>
+
+</head>
+
+<body>
+    <button id="btn">隐藏</button>
+    <br>
+    <img src="images/image01.jpg" id="img">
+
+    <script type="text/javascript">
+        var oImg = document.getElementById('img');
+        var oBtn = document.getElementById('btn');
+        // var see = true;
+
+        console.log(oImg);
+        // console.log(document.getElementsByTagName('img')[0]);
+
+        oBtn.onclick = function () {
+            if (oImg.style.display != 'none') {
+                // 把图片隐藏起来
+                oImg.style.display = 'none';
+                // 更改按钮的文本
+                oBtn.innerHTML = "显示";
+                // see = !see;
+            } else {
+                oImg.style.display = 'block';
+                oBtn.innerHTML = "隐藏"
+                // see = !see;
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我是猪</title>
+    <script type="text/javascript">
+        // 待页面加载完之后才会调用onload()
+        window.onload = function(){
+            var oDiv = document.getElementById('box');
+            console.log(oDiv);
+
+            oDiv.onclick = function(){
+                this.innerHTML = 'LPP';
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <div id="box">lzt</div>
+</body>
+
+</html>
