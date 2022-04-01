@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我是猪</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #qr_code{
+            width: 220px;
+            height: 200px;
+            margin: 100px auto;
+            position: relative;
+            /* background-color: red; */
+        }
+        #qr_code img{
+            position: absolute;
+            right: 0;
+        }
+        #qr_code #close{
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            border: 1px solid #e0e0e0;
+            text-align: center;
+            line-height: 18px;
+            cursor: pointer;
+            color: #666;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="qr_code">
+        <img src="images/image03.jpg" id="code">
+        <span id="close">X</span>
+    </div>
+    <script type="text/javascript">
+        var oClose = document.getElementById('close');
+        var oCode = document.getElementById('qr_code');
+
+        // console.log(oClose);
+        // console.log(oImg);
+        oClose.onclick = function(){
+            // alert("关啦");
+            oCode.style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>
