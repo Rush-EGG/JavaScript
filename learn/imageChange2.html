@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我是猪</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #box{
+            border: 1px solid #ccc;
+            width: 450px;
+            height: 70px;
+            padding-top: 430px;
+            background: url('images/image01.jpg') no-repeat;
+        }
+        #box ul li{
+            display: inline-block;
+            margin-right: 15px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="box">
+        <ul>
+            <li class="item">
+                <img src="images/image01.jpg" width="46">
+            </li>
+            <li class="item">
+                <img src="images/image02.jpg" width="46">
+            </li>
+            <li class="item">
+                <img src="images/image03.jpg" width="46">
+            </li>
+            <li class="item"> 
+                <img src="images/image04.jpg" width="46">
+            </li>
+            <li class="item">
+                <img src="images/image05.jpg" width="46">
+            </li>
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+        function $(id){
+            return typeof(id) == 'string' ? document.getElementById(id) : null;
+        }
+        // console.log($('box'));
+
+        var items = document.getElementsByClassName('item');
+        // console.log(items);
+
+        for(var i = 0; i < items.length; i++){
+            var item = items[i];
+            item.index = i+1;
+            items[i].onmouseover = function(){
+                $('box').style.background = 'url(\'images/image0' + this.index + '.jpg\') no-repeat';
+                // $('box').style.background = "url('images/image01.jpg') no-repeat";
+            }
+        }
+    </script>
+</body>
+
+</html>

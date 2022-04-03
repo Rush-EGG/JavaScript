@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我是猪</title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        #box {
+            width: 1000px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+            padding: 20px;
+        }
+
+        #comment {
+            width: 80%;
+            padding: 10px 10px;
+            font-size: 20px;
+            outline: none;
+        }
+
+        .box_top {
+            margin-bottom: 20px;
+        }
+
+        #comment_content li {
+            border-bottom: 1px dashed #ccc;
+            width: 800px;
+            color: yellowgreen;
+            line-height: 45px;
+        }
+
+        #comment_content li a {
+            float: right;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="box">
+        <div class="box_top">
+            <textarea id="comment" cols="80" rows="10" placeholder="请输入评论"></textarea>
+            <button id="btn">发布</button>
+        </div>
+        <ul id="comment_content">
+            <!-- 在js中通过操作来动态地生成li标签 -->
+            <!-- <li>
+                我的内容
+                <a href="javascript:void(0);">删除</a>
+            </li> -->
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+        window.onload = function () {
+            function $(id) {
+                return typeof (id) == 'string' ? document.getElementById(id) : null;
+            }
+
+            $('btn').onclick = function () {
+                var input = $('comment').value;
+                // console.log(input);
+                if (input == '' || input == "爬") {
+                    alert('请输入有内容、有营养的评论');
+                    $('comment').value = '';
+                    return;
+                }
+
+                var oLi = document.createElement('li');
+                oLi.innerHTML = input + "<a href = 'javascript:void(0)'>删除</a>";
+                // $('comment_content').appendChild(oLi);
+                // 新发布的评论应该在先前的上面
+                $('comment_content').insertBefore(oLi, $('comment_content').children[0]);
+                // 顺便清空一下输入框
+                $('comment').value = '';
+
+                var oDeletes = document.getElementsByTagName('a');
+                for (var i = 0; i < oDeletes.length; i++) {
+                    oDeletes[i].onclick = function(){
+                        this.parentNode.remove();
+                    }
+                }
+            }
+
+
+
+        }
+    </script>
+</body>
+
+</html>

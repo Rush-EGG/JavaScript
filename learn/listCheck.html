@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我是猪</title>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        /* 最后的那个提示框 */
+        #prompt{
+            font-size: 12px;
+            color: darkgray;
+        }
+        /* 输入框 */
+        #score{
+            border: 1px solid darkgray;
+        }
+        .right{
+            background: url("images/image02.jpg") no-repeat 5px center;
+            background-size: 15px 15px;
+            padding-left: 20px;
+            color: lightgreen !important;
+        }
+        .error{
+            background: url("images/image03.jpg") no-repeat 5px center;
+            background-size: 15px 15px;
+            padding-left: 20px;
+            color: red !important;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="box">
+        <label for="score">您的成绩：</label>
+        <input type="text" placeholder="请输入分数" id="score">
+        <span id="prompt">请输入您的成绩</span>
+    </div>
+    <script type="text/javascript">
+        function $(id){
+            return typeof(id) == 'string' ? document.getElementById(id) : null;
+        }
+
+        // 当input输入框失去焦点时
+         $('score').onblur = function(){
+            // 得到输入框中的内容，注意直接得到的值是string类型
+            var value = this.value;
+            // 将value的类型转为float
+            value = parseFloat(value);
+
+            if(isNaN(value)){
+                $('prompt').innerHTML = '输入的格式不正确！！';
+                $('prompt').setAttribute('class', 'error');
+                this.style.borderColor = 'red';
+            }else if(value > 100 || value < 0){
+                $('prompt').innerHTML = '请输入0~100间的成绩！！';
+                $('prompt').setAttribute('class', 'error');
+                this.style.borderColor = 'red';
+            }else{                
+                $('prompt').innerHTML = '';
+                $('prompt').setAttribute('class', 'right');
+                this.style.borderColor = 'lightgreen';
+            }
+         }
+
+    </script>
+</body>
+
+</html>

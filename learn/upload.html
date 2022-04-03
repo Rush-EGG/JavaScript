@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我是猪</title>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+
+    <script type="text/javascript">
+        //function $(id){
+            //return typeof(id) == 'string' ? document.getElementById(id) : null;
+        //}
+        window.onload = function(){
+            var file = document.getElementById('file');
+            file.onchange = function(){
+                // alert('监听到了');
+                // 得到上传文件的本地路径
+                var path = this.value;
+                // 分割字符串
+                var location = path.lastIndexOf('.');
+                // 得到后缀名
+                var suffix = path.substr(location);
+                suffix = suffix.toLowerCase();
+                // console.log(suffix);
+                if(suffix == '.jpg' || suffix == 'png' || suffix == '.jpeg'){
+                    alert('上传格式正确！');
+                }else{
+                    alert('上传格式错误！');
+                }
+            }
+        }
+
+    </script>
+
+</head>
+
+<body>
+    <label for="file">上传图片</label>
+    <input type="file" name="" id="file">
+
+</body>
+
+</html>

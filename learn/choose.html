@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我是猪</title>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #panel{
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 400px;
+            padding: 20px;
+            margin: 100px auto;
+        }
+        .panel-footer{
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="panel">
+        <div class="panel-title">
+            <h3>万万音乐盒</h3>
+            <hr>
+        </div>
+        <div class="panel-content">
+            <input type="checkbox">一眼万年<br>
+            <input type="checkbox">一眼千年<br>
+            <input type="checkbox">一眼百年<br>
+            <input type="checkbox">一眼十年<br>
+            <input type="checkbox">一眼一年<br>
+            <input type="checkbox">义眼顶针<br>
+        </div>
+        <div class="panel-footer">
+            <hr>
+            <button id="allSelect">全选</button>
+            <button id="cancelSelect">取消选中</button>
+            <button id="reverseSelect">反选</button>
+        </div>
+    </div>
+    
+    <script type="text/javascript">
+        // 获取事件源函数
+        function $(id){
+            return typeof(id) == 'string' ? document.getElementById(id) : null;
+        }
+
+        // 获取所有选择框
+        var oInputs = document.getElementsByTagName('input');
+        // console.log(oInputs);
+        
+        // 全选操作
+        $('allSelect').onclick = function(){
+            for(var i = 0; i < oInputs.length; i++){
+                oInputs[i].checked = true;
+            }
+        }
+
+        // 取消选中
+        $('cancelSelect').onclick = function(){
+            for(var i = 0; i < oInputs.length; i++){
+                if(oInputs[i].checked == true){
+                    oInputs[i].checked = false;
+                }
+            }
+        }
+
+        // 反选
+        $('reverseSelect').onclick = function(){
+            for(var i = 0; i < oInputs.length; i++){
+                if(oInputs[i].checked){
+                    oInputs[i].checked = false;
+                }else{
+                    oInputs[i].checked = true;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
