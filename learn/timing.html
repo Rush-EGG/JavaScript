@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我是猪</title>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #date{
+            width: 450px;
+            height: 300px;
+            background-color: darkorange;
+            border-radius: 10px;
+            margin: 100px auto;
+        }
+        #nowDate{
+            width: 450px;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+            color: #fff;
+            font-size: 26px;
+        }
+        #day{
+            width: 200px;
+            height: 200px;
+            line-height: 200px;
+            background-color: orchid;
+            margin: 0 auto;
+            text-align: center;
+            color: #fff;
+            font-weight: bold;
+            font-size: 60px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="date">
+        <p id="nowDate">
+
+        </p>
+        <p id="day">
+
+        </p>
+    </div>
+    <script type="text/javascript">
+        function $(id){
+            return typeof(id) == 'string' ? document.getElementById(id) : null;
+        }
+
+        function getNumTime() {
+            var time;
+            var apm;
+            var now = new Date();
+            var weekArr = ['星期天', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+            // console.log(now);
+            var tempHour = now.getHours();
+            var tempMinute = now.getMinutes();
+            var tempSecond = now.getSeconds();
+            var tempMonth = now.getMonth(); //+1
+            var tempWeekDay = now.getDay(); //从星期天开始，下标为0
+
+            var year = now.getFullYear();
+            var month = tempMonth + 1;
+            var day = now.getDate();
+            var weekDay = weekArr[tempWeekDay];
+            // console.log(month);
+
+            var hour = (tempHour > 12 ? tempHour - 12 : tempHour) + '';
+            if (tempHour == 0) {
+                hour = '12';
+            }
+            if (tempHour >= 12) {
+                apm = 'PM';
+            } else {
+                apm = 'AM';
+            }
+            // console.log(temp);
+
+            var minute;
+            if (tempMinute < 10) {
+                minute = '0' + tempMinute;
+            } else {
+                minute = tempMinute;
+            }
+            // console.log(minute)
+
+            var second;
+            if (tempSecond < 10) {
+                second = '0' + tempSecond;
+            } else {
+                second = tempSecond;
+            }
+
+            date = year + '年' + month + '月' + day + '日';
+            time = hour + ':' + minute + ':' + second + ' ' + apm;
+
+            $('nowDate').innerHTML = date + ' ' + time + ' ' + weekDay;
+        }
+
+        setInterval(getNumTime, 100);
+        $('day')
+
+    </script>
+</body>
+
+</html>
