@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我是猪</title>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #father{
+            width: 400px;
+            height: 400px;
+            position: relative;
+            background-color: red;
+            margin: 40px;
+        }
+        #son{
+            width: 300px;
+            height: 100px;
+            background-color: #0000FF;
+            border: 5px solid #000;
+            margin-left: 20px;
+            /* margin-top: 10px; */
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="father">
+        <div id="son"></div>
+    </div>
+    <script type="text/javascript">
+        function $(id){
+            return typeof(id) == 'string' ? document.getElementById(id) : null;
+        }
+
+        console.log($('son').offsetParent); //如果father标签有定位(position)则为father，否则是body标签
+        
+        // offsetTop 当前元素的上边框到offsetParent元素上边框的距离
+        // 与当前元素的边框厚度、是否存在无关
+        console.log("The offsetTop of 'son' is " + $('son').offsetTop);
+
+        // offsetLeft 当前元素的左边框到offsetParent元素左边框的距离
+        console.log("The offsetLef of 'son' is " + $('son').offsetLeft);
+
+    </script>
+</body>
+
+</html>

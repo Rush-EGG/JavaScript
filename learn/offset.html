@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我是猪</title>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #grandfather{
+            border: 5px solid red;
+            padding: 30px;
+            position: absolute;
+        }
+        #father{
+            /* padding是内边距，即本元素和子元素之间的距离 */
+            padding: 20px;
+            border: 1px solid #000;
+            position: relative;
+        }
+        #son{
+            width: 100px;
+            height: 100px;
+            /* margin是到父元素的距离 */
+            margin: 10px;
+            background-color: red;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="grandfather">
+        <div id="father">
+            <div id="son"></div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        function $(id){
+            return typeof(id) == 'string' ? document.getElementById(id) : null;
+        }
+
+        // 获取
+        function getElementLeft(obj){
+            // 得到当前元素的左偏移量
+            var actualLeft = obj.offsetLeft;
+            console.log("本元素的offsetLeft为" + actualLeft + 'px');
+            // 求出已定位的父级
+            var parent = obj.offsetParent;
+            while(parent != null){
+                console.log(parent);
+
+                // clientLeft就是border-left即求出边框的厚度
+                actualLeft = actualLeft +  parent.clientLeft + parent.offsetLeft;
+                parent = parent.offsetParent;
+            }
+
+            return actualLeft + 'px';
+        }
+
+        // 10+1+20+30+5
+        var distance = getElementLeft($('son'));
+        console.log("The distance between the inner box and the border is " + distance);
+
+    </script>
+</body>
+
+</html>

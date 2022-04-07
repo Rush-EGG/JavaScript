@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我是猪</title>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="box" style="width: 200px; height: 200px; border: 1px solid red; padding: 20px;"></div>
+    <div id="none" style="width: 200px; height: 200px; border: 1px solid red; padding: 20px; display: none;"></div>
+    <script type="text/javascript">
+        function $(id){
+            return typeof(id) == 'string' ? document.getElementById(id) : null;
+        }
+
+        // 注意！所有的client属性都是只读的
+        // clientWidth = width + padding-left + padding-right
+        console.log("The clientWidth of box is " + $('box').clientWidth + 'px');
+        // clientHeight = height + padding-top + padding-bottom
+        console.log("The clientHeight of box is " + $('box').clientHeight + 'px');
+        // clientLeft 左边框的大小
+        console.log("The clientLeft of box is " + $('box').clientLeft + 'px');
+        // clientTop 上边框的大小
+        console.log("The clientTop of box is " + $('box').clientTop + 'px');
+
+
+        // 如果给元素设置了属性display: none即不让元素显示在界面上，那么所有的client属性均为0
+        console.log("If the display of some element is 'none', then all of the client-character will be 0!");
+        console.log("For example: the clientLeft of none is " + $('none').clientLeft + 'px');
+
+        // 尽量避免在循环内去访问client的属性，会增加不必要的性能消耗
+
+    </script>
+</body>
+
+</html>

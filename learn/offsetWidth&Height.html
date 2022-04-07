@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我是猪</title>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #box{
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000;
+            background-color: red;
+            /* padding: 10px; */
+            padding-left: 5px;
+            padding-right: 12px;
+            margin: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="box"></div>
+    <div id="style" style="width: 100px; height: 100px;"></div>
+    <script type="text/javascript">
+        function $(id){
+            return typeof(id) == 'string' ? document.getElementById(id) : null;
+        }
+
+        // offsetHeight = height + border-top + border-bottom
+        console.log('The height of the box is ' + $('box').offsetHeight);// 200+1*2
+
+        // offsetWidth = width + border-left + border-right + padding-left + padding-right
+        console.log('The width of the box is ' + $('box').offsetWidth);// 200+1*2+5+12
+
+        // 通过style.只能获取行内的属性，即写在div标签内的属性
+        // 得到的是带单位的字符串数据，不便于计算
+        console.log($('style').style.width + $('style').style.height);
+
+        // offsetWidth和offsetHeight是只读属性，不能直接通过表达式去改写
+        // $('box').offsetHeight = 300;// Error
+        $('style').style.width = 300 + 'px';
+    </script>
+</body>
+
+</html>

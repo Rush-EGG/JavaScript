@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我是猪</title>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #box{
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000000;
+            padding: 10px;
+            margin: 10px;
+            overflow: scroll;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="box">
+        <p>内容</p>
+        <p>内容</p>
+        <p>内容</p>
+        <p>内容</p>
+        <p>内容</p>
+        <p>内容</p>
+        <p>内容</p>
+        <p>内容</p>
+        <p>内容</p>
+    </div>
+    <button id="btn">向下滚动</button>
+
+    <script type="text/javascript">
+        function $(id){
+            return typeof(id) == 'string' ? document.getElementById(id) : null;
+        }
+
+        // 在元素未被滚动时，scrollTop和scrollLeft均为0
+        console.log($('box').scrollTop)
+        console.log($('box').scrollLeft);
+
+        // 当滚动滚动条时，打印输出scrollTop
+        $('box').onscroll = function(){
+            console.log($('box').scrollTop);
+        }
+        
+        // scroll属性是可读可写的
+        $('box').scrollTop = 20;
+        $('btn').onclick = function(){
+            $('box').scrollTop += 10;
+        }
+
+    </script>
+</body>
+
+</html>

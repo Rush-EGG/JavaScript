@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我是猪</title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- offset dimension 偏移量
+    1.定位父级 offsetParent
+    2.offsetLeft offsetTop
+    3.offsetHeight offsetWidth -->
+    <div id="fixed" style="position: fixed;"></div>
+
+    <div id="no_fixed"></div>
+
+    <div id="father" style="position: relative;">
+        <div id="hasFather"></div>
+    </div>
+    <div id="grandFather" style="position: absolute;">
+        <div id="father" style="position: absolute;">
+            <div id="grandChild1"></div>
+        </div>
+    </div>
+    <div id="grandFather" style="position: absolute;">
+        <div id="father">
+            <div id="grandChild2"></div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function $(id) {
+            return typeof (id) == 'string' ? document.getElementById(id) : null;
+        }
+
+        // 1.元素自身有fixed定位，offsetParent是null
+        console.log($('fixed').offsetParent);
+
+        // 2.元素自身没有fixed定位，offsetParent是body
+        console.log($('no_fixed').offsetParent);
+
+        // 3.元素自身没有定位，元素的父级有定位，offsetParent就是最近的有定位的父级
+        console.log($('hasFather').offsetParent);
+        console.log($('grandChild1').offsetParent);
+        console.log($('grandChild2').offsetParent);
+    </script>
+</body>
+
+</html>
