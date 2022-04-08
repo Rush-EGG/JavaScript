@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我是猪</title>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #box{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="box"></div>
+    <script type="text/javascript">
+        function $(id){
+            return typeof(id) == 'string' ? document.getElementById(id) : null;
+        }
+
+        // 事件冒泡：事件开始由最具体的元素接受，然后逐级向上传播
+        $('box').onclick = function(){
+            $('box').innerHTML += 'div\n';
+        }
+
+        document.body.onclick = function(){
+            $('box').innerHTML += 'body\n';
+        }
+
+        document.documentElement.onclick = function(){
+            $('box').innerHTML += 'html\n';
+        }
+
+        document.onclick = function(){
+            $('box').innerHTML += 'document\n';
+        }
+        
+        window.onclick = function(){
+            $('box').innerHTML += 'window\n';
+        }
+    </script>
+</body>
+
+</html>

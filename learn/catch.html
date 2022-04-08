@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我是猪</title>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #box{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="box"></div>
+    <script type="text/javascript">
+        function $(id){
+            return typeof(id) == 'string' ? document.getElementById(id) : null;
+        }
+
+        // 事件捕获：由不太具体的节点更早的接收事件，而最具体的节点应该是最后接收
+        $('box').addEventListener('click', function(){
+            $('box').innerHTML += 'box\n';
+        }, true);
+        
+        document.body.addEventListener('click', function(){
+            $('box').innerHTML += 'body\n';
+        }, true);
+        
+        document.documentElement.addEventListener('click', function(){
+            $('box').innerHTML += 'html\n';
+        }, true);
+        
+        document.addEventListener('click', function(){
+            $('box').innerHTML += 'document\n';
+        }, true);
+        
+        window.addEventListener('click', function(){
+            $('box').innerHTML += 'window\n';
+        }, true);
+        
+        $('box').addEventListener('click', function(){
+            $('box').innerHTML += 'box\n';
+        }, false);
+        
+        document.body.addEventListener('click', function(){
+            $('box').innerHTML += 'body\n';
+        }, false);
+        
+        document.documentElement.addEventListener('click', function(){
+            $('box').innerHTML += 'html\n';
+        }, false);
+        
+        document.addEventListener('click', function(){
+            $('box').innerHTML += 'document\n';
+        }, false);
+        
+        window.addEventListener('click', function(){
+            $('box').innerHTML += 'window\n';
+        }, false);
+        
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我是猪</title>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #box{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="box"></div>
+    <script type="text/javascript">
+        function $(id){
+            return typeof(id) == 'string' ? document.getElementById(id) : null;
+        }
+
+        // 在DOM2级事件中处理定义程序：
+        // 布尔值默认为false，处于冒泡阶段；如果是true，则处于捕获阶段
+        // addEventListner(事件名，处理程序的函数名，布尔值)
+        // removeEventListner(事件名，处理程序的函数名，布尔值)
+
+        // IE8浏览器不支持
+        // 下面两个方法不会互相覆盖，当单击box时，均会执行
+        // $('box').addEventListener('click', function(){
+        //     this.innerHTML += '1';
+        // }, false)
+        // $('box').addEventListener('click', function(){
+        //     this.innerHTML += '2';
+        // }, false)
+
+        // 移除函数绑定的方式
+        function handler(){
+            // console.log(this);
+            this.innerHTML += '1';
+        }
+        $('box').addEventListener('click', handler, false);
+        $('box').removeEventListener('click', handler, false);
+
+    </script>
+</body>
+
+</html>
