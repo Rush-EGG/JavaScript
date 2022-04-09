@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我是猪</title>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .item{
+            width: 100px;
+            height: 80px;
+            background-color: lightblue;
+            margin: 50px 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- <div id="box"></div> -->
+    <ul id="box">
+        <li class="item">1</li>
+        <li class="item">2</li>
+    </ul>
+    <script type="text/javascript">
+        function $(id){
+            return typeof(id) == 'string' ? document.getElementById(id) : null;
+        }
+
+        // currentTarget属性返回事件当前所在的节点，即正在执行监听函数所绑定的节点
+        $('box').onclick = function(){
+            var e = e || window.event;
+            // console.log(e);
+            console.log(e.currentTarget);
+            var items = document.getElementsByTagName('li');
+            items[0].innerHTML = e.currentTarget;
+        }
+
+        // target属性，返回的是事件的实际目标对象
+        $('box').onclick = function(){
+            var e = e || window.event;
+            // target是正在被触发事件的对象
+            console.log(e.target == this);
+            // 内部的this和currentTarget是被监听的对象
+            console.log(e.currentTarget == this);
+        }
+
+        $('box').onmouseover = function(){
+            var e = e || window.event;
+            var target = e.target;
+            target.style.backgroundColor = 'red';
+        }
+
+        $('box').onmouseout = function(){
+            var e = e || window.event;
+            var target = e.target;
+            target.style.backgroundColor = 'lightblue';
+        }
+    </script>
+</body>
+
+</html>

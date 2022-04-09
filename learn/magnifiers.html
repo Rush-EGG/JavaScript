@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我是猪</title>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #box{
+            width: 705px;
+            height: 508px;
+            border: 1px solid #ddd;
+            position: relative;
+            margin: 50px;
+        }
+        #small_box{
+            width: 705px;
+            height: 508px;
+            position: relative;
+        }
+        #small_box #mask{
+            position: absolute;
+            width: 210px;
+            height: 210px;
+            background: url(images/image03.jpg) repeat;
+            top: 0;
+            left: 0;
+        }
+        #big_box{
+            position: absolute;
+            left: 715px;
+            top: 0;
+            width: 705px;
+            height: 508px;
+            border: 1px solid #ddd;
+            overflow: hidden;
+        }
+        #big_box img{
+            position: absolute;
+            z-index: 5;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="box">
+        <div id="small_box">
+            <img src="images/image05.jpg" alt="">
+            <span id="mask">
+
+            </span>
+        </div>
+        <div id="big_box">
+            <img src="images/image05.jpg" alt="">
+        </div>
+    </div>
+    <script type="text/javascript">
+        function $(id){
+            return typeof(id) == 'string' ? document.getElementById(id) : null;
+        }
+
+
+    </script>
+</body>
+
+</html>

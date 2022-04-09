@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我是猪</title>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #box{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="box"></div>
+    <button id="btn">你过来呀</button>
+    <script type="text/javascript">
+        function $(id){
+            return typeof(id) == 'string' ? document.getElementById(id) : null;
+        }
+
+        // 下面的不适用于ie浏览器
+        // $('btn').addEventListener('click', fn, false);
+        // 下面的只适用于ie浏览器
+        // $('btn').attachEvent('onclick', fn);
+
+        // 兼容方法
+        function addEvent(target, eventType, handler){
+            if(target.addEventListener){
+                // 说明是在chrome/safari/Firefox上
+                target.addEventListener(eventType, handler, false);
+            }else{
+                target.attachEvent('on' + eventType, function(){
+                    handler.call(target);
+                });
+            }
+        }
+
+        addEvent($('btn'), 'click', function(){
+            console.log(this.innerHTML);
+        })
+
+
+        
+        function fn(){
+            console.log(this.innerHTML);
+        }
+
+        // 如果直接调用fn方法，因为this指向windows，所有只能显示undefined
+        fn();
+        // 但fn()的全称其实是fn.call()，这时在括号内传入参数，就能修改this的指向
+        var obj = {
+            innerHTML: '我是猪'
+        }
+        fn.call(obj);
+
+    </script>
+</body>
+
+</html>

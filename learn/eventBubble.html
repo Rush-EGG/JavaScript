@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我是猪</title>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #box{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+
+</head>
+
+<body>
+    <button id="btn" style="height: 30px; width: 200px;">按钮</button>
+    <input type="text" id="test">
+    <!-- <div id="box"></div> -->
+    <script type="text/javascript">
+        function $(id){
+            return typeof(id) == 'string' ? document.getElementById(id) : null;
+        }
+
+        // bubbles返回一个布尔值，表示当前事件是否会冒泡，只读
+        // 大部分事件都会冒泡，但是focus blur scroll等不会
+        $('btn').onclick = function(e){
+            console.log(e.bubbles);
+        }
+
+        $('test').onfocus = function(e){
+            console.log(e.bubbles);
+        }
+
+        // stopPropagation表示取消事件的进一步捕获，无返回值
+        // 但是无法阻止同一事件的其他监听函数被调用
+        // $('btn').addEventListener('click', function(e){
+        //     e.stopPropagation();
+        //     this.innerHTML = '修改了';
+        // }, false)
+        // $('btn').addEventListener('click', function(e){
+        //     this.style.backgroundColor = 'blue';
+        // }, false)
+
+        // document.body.onclick = function(e){
+        //     console.log('body');
+        // }
+
+        // stopImmediatePropagation既可以阻止冒泡，也可以阻止同一事件的其他监听函数被调用
+        // $('btn').addEventListener('click', function(e){
+        //     e.stopImmediatePropagation();
+        //     this.innerHTML = '修改了';
+        // }, false)
+        // $('btn').addEventListener('click', function(e){
+        //     // e.stopPropagation();
+        //     this.style.backgroundColor = 'blue';
+        // }, false)
+
+        // document.body.onclick = function(e){
+        //     console.log('body');
+        // }
+
+        // cancleBubble属性用于阻止冒泡，该属性可读写 默认为false
+        // 当设置为true时，可以阻止冒泡
+        $('btn').onclick = function(e){
+            e.cancelBubble = true;
+            console.log(e.bubbles);
+        }
+        document.body.onclick = function(){
+            console.log('body');
+        }
+
+    </script>
+</body>
+
+</html>

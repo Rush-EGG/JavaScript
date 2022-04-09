@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我是猪</title>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #box{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+
+</head>
+
+<body>
+    <a href="https://www.baidu.com" id="href">百度</a>
+    <!-- <div id="box"></div> -->
+    <script type="text/javascript">
+        function $(id){
+            return typeof(id) == 'string' ? document.getElementById(id) : null;
+        }
+
+        // 1.用preventDefault做
+        // $('href').onclick = function(e){
+        //     e.preventDefault(); // 这样一来不会跳转到百度，即阻止了默认事件
+        //     this.innerHTML = '我是猪';
+        // }
+
+        // 2.操作returnValue属性值 ie8以上不支持
+        $('href').onclick = function(e){
+            e.returnValue = false; //阻止默认事件
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我是猪</title>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #box{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            position: fixed;
+        }
+    </style>
+
+</head>
+
+<body style="height: 2000px;">
+    <div id="box"></div>
+    <script type="text/javascript">
+        function $(id){
+            return typeof(id) == 'string' ? document.getElementById(id) : null;
+        }
+
+        $('box').onmousemove = function(e){
+            // console.log(e);
+            // clientX/Y和x/y都是相对于浏览器的x轴和y轴的距离
+            this.innerHTML = `clientX:${e.clientX}; clientY:${e.clientY}; X:${e.x}; Y:${e.y}; `;
+            // screenX/Y是相对于显示器x轴和y轴的距离
+            this.innerHTML +=  `screenX:${e.screenX}; screenY:${e.screenY}; `;
+            // pageX/Y是相对于整个页面的x轴和y轴的距离，如果页面可以滚动，那么会跟着变
+            this.innerHTML += `pageX:${e.pageX}; pageY:${e.pageY}; `;
+            // offsetX/Y是相对于事件源的x轴和y轴距离
+            this.innerHTML += `offsetX:${e.offsetX}; offsetY:${e.offsetY};`;
+        }
+
+
+
+    </script>
+</body>
+
+</html>

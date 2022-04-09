@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我是猪</title>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        ul{
+            list-style: none;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+        ul li{
+            float: left;
+            width: 180px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            color: #fff;
+            background-color: #000;
+            margin: 0 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- <div id="box"></div> -->
+    <ul id="box">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <script type="text/javascript">
+        function $(id){
+            return typeof(id) == 'string' ? document.getElementById(id) : null;
+        }
+
+        window.onload = function(){
+            // 1.常规方法
+            var lis = document.getElementsByTagName('li');
+            // for(var i = 0; i < lis.length; i ++){
+            //     lis[i].onmouseover = function(){
+            //         this.style.backgroundColor = 'blue';
+            //     }
+            // }
+            // for(var i = 0; i < lis.length; i ++){
+            //     lis[i].onmouseout = function(){
+            //         this.style.backgroundColor = 'black';
+            //     }
+            // }
+
+            // 2.事件代理
+            // 即给ul标签来绑定
+            $('box').onmouseover = function(e){
+                e = e || window.event;
+                var target = e.target || e.srcElement;
+                target.style.backgroundColor = 'blue';
+            }
+            $('box').onmouseout = function(e){
+                e = e || window.event;
+                var target = e.target || e.srcElement;
+                target.style.backgroundColor = 'black';
+            }
+
+            setTimeout(function(){
+                var item = document.createElement('li');
+                item.innerHTML = '6';
+                $('box').appendChild(item);
+            }, 1000)
+        }
+
+    </script>
+</body>
+
+</html>

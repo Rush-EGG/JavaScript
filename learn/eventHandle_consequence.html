@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我是猪</title>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #box{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="box" onclick="this.innerHTML += 'html\n'"></div>
+    <script type="text/javascript">
+        function $(id){
+            return typeof(id) == 'string' ? document.getElementById(id) : null;
+        }
+
+        // 如果同时出现HTML事件处理程序和DOM0级事件处理程序，
+        // 那么DOM0级会把HTML覆盖掉
+        $('box').onclick =  function(){
+            this.innerHTML += 'DOM0级';
+        }
+
+        if($('box').addEventListener){
+            $('box').addEventListener('click', function(){
+                this.innerHTML += 'DOM2级\n';
+            })
+        }
+
+    </script>
+</body>
+
+</html>

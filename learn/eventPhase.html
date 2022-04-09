@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我是猪</title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+
+</head>
+
+<body>
+    <button id="btn">事件流</button>
+    <!-- <div id="box"></div> -->
+    <script type="text/javascript">
+        function $(id) {
+            return typeof (id) == 'string' ? document.getElementById(id) : null;
+        }
+
+        // 1捕获阶段
+        $('btn').addEventListener('click', function (e) {
+            e = e || window.event;
+            console.log(e.eventPhase);
+        }, true)
+
+        // 2目标阶段
+        $('btn').onclick = function (e) {
+            console.log(e.eventPhase);
+        }
+
+        // 3冒泡阶段
+        $('btn').addEventListener('click', function (e) {
+            console.log(e.eventPhase);
+        }, false)
+    </script>
+</body>
+
+</html>
