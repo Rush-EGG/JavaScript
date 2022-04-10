@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我是猪</title>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #box{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            position: absolute;
+            top: 50px;
+        }
+        button{
+            width: 80px;
+            height: 40px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <button id="btn">动画</button>
+    <div id="box"></div>
+    <script type="text/javascript">
+        function $(id){
+            return typeof(id) == 'string' ? document.getElementById(id) : null;
+        }
+
+        var timer = null;
+
+        $('btn').onclick = function(){
+            clearInterval(timer);
+            timer = setInterval(function(){
+                // 处理边界
+                if($('box').offsetLeft >= 500){
+                    clearInterval(timer);
+                }else{
+                    $('box').style.left = $('box').offsetLeft + 10 + 'px';
+                }
+            }, 30)
+        }
+
+    </script>
+</body>
+
+</html>
