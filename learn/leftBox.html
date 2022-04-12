@@ -49,10 +49,11 @@
                 // this.style.left = 0 + 'px';
                 clearInterval(timer);
                 timer = setInterval(function () {
-                    if ($('box').offsetLeft < 0) {
-                        $('box').style.left = $('box').offsetLeft + 10 + 'px';
-                    } else {
+                    if ($('box').offsetLeft >= 0) {
                         clearInterval(timer);
+                        return;
+                    } else {
+                        $('box').style.left = $('box').offsetLeft + 10 + 'px';
                     }
                 }, 30)
             }
@@ -61,10 +62,11 @@
                 // this.style.left = -200 + 'px';
                 clearInterval(timer);
                 timer = setInterval(function(){
-                    if($('box').offsetLeft > -200){
-                        $('box').style.left = $('box').offsetLeft - 10 + 'px'; 
-                    }else{
+                    if($('box').offsetLeft <= -200){
                         clearInterval(timer);
+                        return;
+                    }else{
+                        $('box').style.left = ($('box').offsetLeft - 10) + 'px'; 
                     }
                 })
             }

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我是猪</title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            opacity: 0.3;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="box"></div>
+    <script type="text/javascript">
+        function $(id) {
+            return typeof (id) == 'string' ? document.getElementById(id) : null;
+        }
+
+        window.onload = function () {
+            var timer = null,
+                // nowAlpha = $('box').style.opacity,
+                nowAlpha = 30,
+                speed = 0;
+
+            $('box').onmouseover = function () {
+                // var nowAlpha = $('box').style.opacity;
+                // console.log($('box').style.opacity);
+                opacityAnimation(this, 100);
+            }
+
+            $('box').onmouseout = function(){
+                // var nowAlpha = $('box').style.opacity;
+                console.log(nowAlpha);
+                opacityAnimation(this, 30);
+            }
+
+            function opacityAnimation(obj, endAlpha) {
+                clearInterval(timer);
+                timer = setInterval(() => {
+                    speed = endAlpha > nowAlpha ? 10 : -10;
+
+                    if(nowAlpha == endAlpha){
+                        clearInterval(timer);
+                        return;
+                    }
+                    nowAlpha += speed;
+                    console.log(nowAlpha);
+                    obj.style.opacity = nowAlpha / 100;
+                }, 30);
+            }
+        }
+    </script>
+</body>
+
+</html>

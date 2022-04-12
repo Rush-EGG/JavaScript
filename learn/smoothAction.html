@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我是猪</title>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            position: relative;
+            left: -200px;
+        }
+        #box span {
+            position: absolute;
+            width: 40px;
+            height: 60px;
+            color: white;
+            background-color: #000;
+            right: -40px;
+            top: 50%;
+            margin-top: -30px;
+            line-height: 60px;
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="box">
+        <span>拉开</span>
+    </div>
+    <script type="text/javascript">
+        function $(id){
+            return typeof(id) == 'string' ? document.getElementById(id) : null;
+        }
+
+        // 缓动公式：加速度 = （结束值 - 现在的位置） / 缓动系数
+        // 所以加速度会由慢到快
+        window.onload = function(){
+            var timer = null;
+            var end0 = 0, end1 = -200;
+
+            $('box').onmouseover = function(){
+                // clearInterval(timer);
+                // timer = setInterval(function(){
+                //     var speed = Math.ceil((end0 - $('box').offsetLeft) / 10);
+                //     if($('box').offsetLeft >= end0){
+                //         clearInterval(timer);
+                //         return;
+                //     }else{
+                //         // console.log($('box').offsetLeft);
+                //         $('box').style.left = $('box').offsetLeft + speed + 'px';
+                //     }
+                // }, 30)
+                smoothAction(this, end0);
+            }
+
+            $('box').onmouseout = function(){
+                // clearInterval(timer);
+                // timer = setInterval(() => {
+                //     var speed = Math.floor((end1 - $('box').offsetLeft) / 10);
+                //     if($('box').offsetLeft <= end1){
+                //         clearInterval(timer);
+                //         return;
+                //     }else{
+                //         // console.log($('box').offsetLeft);
+                //         $('box').style.left = $('box').offsetLeft + speed + 'px';
+                //     }
+                // }, 30);
+                smoothAction(this, end1);
+            }
+
+            // 对冗余代码进行封装
+            function smoothAction(obj, end){
+                clearInterval(timer);
+                timer = setInterval(() => {
+                    var speed;
+                    if(end >= 0){
+                        speed = Math.ceil((end - obj.offsetLeft) / 10);
+                    }else{
+                        speed = Math.floor((end - obj.offsetLeft) / 10);
+                    }
+
+                    if(obj.offsetLeft == end){
+                        clearInterval(timer);
+                        // return;
+                    }else{
+                        obj.style.left = obj.offsetLeft + speed + 'px';
+                    }
+                }, 30);
+            }
+        }
+
+    </script>
+</body>
+
+</html>
