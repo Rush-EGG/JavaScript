@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>我是猪</title>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        .container{
+            width: 1190px;
+            height: 100%;
+            margin: 0 auto;
+        }
+        .container div{
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            color: white;
+            font-size: 30px;
+        }
+        .sidebar{
+            position: fixed;
+            width: 40px;
+            right: 20px;
+            top: 300px;
+            font-size: 16px;
+            font-weight: 700;
+            text-align: center;
+        }
+        .sidebar li{
+            height: 50px;
+            border-bottom: 1px solid #ddd;
+            /* background-color: red; */
+        }
+        .sidebar li a{
+            color: peru;
+        }
+        .sidebar li.current{
+            background-color: coral;
+        }
+        .sidebar li.current a{
+            color: #fff;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- <div id="box"></div> -->
+    <div class="container" id="box">
+        <div class="current">爱逛彻硕</div>
+        <div >爱吃大便</div>
+        <div >爱吃小编</div>
+        <div >都很爱吃</div>
+    </div>
+    <ul class="sidebar" id="sidebar">
+        <li class="current">
+            <a href="javascript:void(0)">爱逛彻硕</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)">爱吃大便</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)">爱吃小编</a>
+        </li>
+        <li>
+            <a href="javascript:void(0)">都很爱吃</a>
+        </li>
+    </ul>
+    <script src="js/myAnimation.js"></script>
+    <script type="text/javascript">
+        function $(id){
+            return typeof(id) == 'string' ? document.getElementById(id) : null;
+        }
+
+        window.onload = function(){
+            // 获取标签
+            var box = $('box');
+            var allBoxs = box.children;
+            var sidebar = $('sidebar');
+            var lis = sidebar.children;
+            // 监听用户是否点击
+            var isClick = false;
+
+            // 上色
+            var colors = ['red', 'blue', 'pink', 'purple'];
+            for(var i = 0; i < allBoxs.length; i++){
+                allBoxs[i].style.backgroundColor = colors[i];
+            }
+
+            // 监听侧边栏按钮
+            for(var i = 0; i < lis.length; i++){
+                lis[i].index = i;
+                lis[i].onclick = function(){
+                    isClick = true;
+                    // 保证排他性
+                    for(var j = 0; j < lis.length; j++){
+                        lis[j].className = '';
+                    }
+                    this.className = 'current';
+                    // document.documentElement.scrollTop = this.index * document.body.clientHeight;
+                    // 页面动画
+                    startAnimation(document.documentElement,
+                    {
+                        'scrollTop': this.index * document.body.clientHeight
+                    },function(){
+                        isClick = false;
+                    });
+                }
+            }
+
+            // 监听页面滚动
+            window.onscroll = function(){
+                if(!isClick){
+                    // 获取页面当前的高度
+                    var windowTop = document.documentElement.scrollTop || document.body.scrollTop;
+                    for(var i = 0; i < lis.length; i++){
+                        if(windowTop >= allBoxs[i].offsetTop){
+                            // 保证排他性
+                            for(var j = 0; j < allBoxs.length; j++){
+                                lis[j].className = '';
+                            }
+                            lis[i].className = 'current';
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
