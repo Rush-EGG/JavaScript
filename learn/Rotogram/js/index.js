@@ -7,6 +7,7 @@ window.onload = function () {
     var prev = $('prev');
     var slider_index = $('slider_index');
     var iNow = 0; // 当前可视元素的索引
+    var timer = null;
 
     // 动态创建索引器
     for (var i = 0; i < allBoxs.length; i++) {
@@ -35,6 +36,88 @@ window.onload = function () {
          * 并让下一张图片显示到正中间
          */
 
+        startAnimation(allBoxs[iNow], {
+            "left": -scroll_w
+        })
+        // 让iNow更新
+        iNow ++;
+        if(iNow >= allBoxs.length){
+            iNow = 0;
+        }
+        allBoxs[iNow].style.left = scroll_w + 'px';
+        startAnimation(allBoxs[iNow], {
+            "left": 0
+        })
+
+        // 改变索引
+        changeIndex();
+    }
+
+    // 监听上一张按钮的事件
+    prev.onclick = function(){
+        /**
+         * 让当前可视的图片滚到右边
+         * 并让上一张图片显示到中间
+         */
+        startAnimation(allBoxs[iNow], {
+            "left": scroll_w
+        })
+        // 让iNow更新
+        iNow --;
+        if(iNow < 0){
+            iNow = allBoxs.length - 1;
+        }
+        allBoxs[iNow].style.left = -scroll_w + 'px';
+        startAnimation(allBoxs[iNow], {
+            "left": 0
+        })
+
+        // 改变索引
+        changeIndex();
+    }
+
+    var slider_index_icons = slider_index.children;
+    // 遍历索引器，添加监听事件
+    for(var i = 0; i < slider_index_icons.length; i++){
+        slider_index_icons[i].onmousedown = function(){
+            // console.log(this.innerHTML);
+            var index = parseInt(this.innerHTML) - 1;
+
+            // 点击的索引与当前的iNow进行对比
+            if(index > iNow){
+                startAnimation(allBoxs[iNow], {
+                    "left": -scroll_w
+                })
+                allBoxs[index].style.left = scroll_w + 'px';
+            }else if(index < iNow){
+                startAnimation(allBoxs[iNow], {
+                    "left": scroll_w
+                })
+                allBoxs[index].style.left = -scroll_w + 'px';
+            }
+            iNow = index;
+            startAnimation(allBoxs[iNow], {
+                "left": 0
+            })
+
+            // 改变索引
+            changeIndex();
+        }
+    }
+
+    // 开启定时器，自动播放
+    timer = setInterval(autoPlay, 4000);
+    // 但是当鼠标悬浮到轮播图上的任意位置时，就应该停止自动播放
+    slider.onmouseover = function(){
+        clearInterval(timer);
+    }
+    // 离开了就继续开启自动播放
+    slider.onmouseout = function(){
+        timer = setInterval(autoPlay, 4000);
+    }
+
+    // 自动播放的代码
+    function autoPlay(){
         startAnimation(allBoxs[iNow], {
             "left": -scroll_w
         })

@@ -49,6 +49,8 @@
 }
 
 .slider_index .slider_index_icon{
+    display: inline-block;
+    line-height: 40px;
     margin: 0 50px;
 }
 
